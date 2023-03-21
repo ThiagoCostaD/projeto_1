@@ -1,15 +1,17 @@
 {% include 'receitas/partials/head.html' %}
 <body>
-    <header class="main-head-container">
-        <div class="main-head container">
-            <h1>
-                <a href="/">
-                    <i class="fas fa-utensils"></i>
-                    <span>Chef {{ name}}</span>
-            </h1>
-            </a>
+    {% include 'receitas/partials/header.html' %}
+    {% include 'receitas/partials/search.html' %}
+
+    <main class="main-content-container">
+        <div class="main-content main-content-list container">
+            <div class="receitas receitas-listas-itens">
+                <div class="receitas cover">
+                    <img src="https://via.placeholder.com/1280x720.png/269fe6" alt="temporário">
+                </div>
+            </div>
         </div>
-    </header>
+    </main>
 </body>
 
 </html>
