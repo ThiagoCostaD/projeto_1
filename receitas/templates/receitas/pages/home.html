@@ -1,17 +1,21 @@
 {% include 'receitas/partials/head.html' %}
+
 <body>
     {% include 'receitas/partials/header.html' %}
     {% include 'receitas/partials/search.html' %}
 
     <main class="main-content-container">
         <div class="main-content main-content-list container">
-            <div class="receitas receitas-listas-itens">
-                <div class="receitas cover">
-                    <img src="https://via.placeholder.com/1280x720.png/269fe6" alt="temporário">
-                </div>
-            </div>
+            {% include 'receitas/partials/receitas.html' %}
+            {% include 'receitas/partials/receitas.html' %}
+            {% include 'receitas/partials/receitas.html' %}
+            {% include 'receitas/partials/receitas.html' %}
+            {% include 'receitas/partials/receitas.html' %}
+            {% include 'receitas/partials/receitas.html' %}
+            {% include 'receitas/partials/receitas.html' %}
         </div>
     </main>
+    {% include 'receitas/partials/footer.html' %}
 </body>
 
 </html>
