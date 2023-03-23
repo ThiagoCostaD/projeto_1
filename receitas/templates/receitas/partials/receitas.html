@@ -1,58 +1,66 @@
 <div class="receitas receitas-listas-itens">
     <div class="receitas cover">
-        <img src="https://veja.abril.com.br/wp-content/uploads/2017/07/cafecc81-da-manhacc83.jpg?quality=70&strip=info&w=1125&h=720&crop=1"
-            alt="temporário">
+        <a href="{% url 'receitas:receita' receita.id %}"></a>
+        <img src="{{receita.cover.url}}"alt="temporário">
     </div>
     <div class="receitas-titulo-container">
-        <h2 class="receitas-titulo">Lorem ipsum dolor sit amet.</h2>
+        <h2 class="receitas-titulo">
+            <a href="{% url 'receitas:receita' receita.id %}">
+                {{receita.title}}
+            </a>
+        </h2>
     </div>
 
 
     <div class="receitas-autor">
         <span class="receitas-autor-item">
             <i class="fas fa-user"></i>
-                Thiago Costa
+            {{receita.author.first_name}} {{receita.author.last_name}}
         </span>
         <span class="receitas-autor-item">
             <i class="fas fa-calendar-alt"></i>
-            22/03/2023 16:30
+            {{receita.created_at|date:"d/m/Y"}}
         </span>
         <span class="receitas-autor-item">
             <a href="#">
                 <i class="fas fa-layer-group"></i>
-                <span>Café da manhã</span>
+                <span>{{receita.category.name}}</span>
             </a>
         </span>
     </div>
 
     <div class="receitas-content">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni fugiat commodi ullam quas modi.
-            Ea cumque labore veniam, sequi corrupti quas beatae fuga alias quae, vero dicta accusamus
-            aliquam in!</p>
+        <p>{{receita.description}}</p>
     </div>
 
     <div class="receitas-meta-container">
         <div class="recipe-meta recipe-preparation">
             <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i> Preparo</h3>
             <div class="recipe-meta-text">
-                0 Minutos
+                {{receita.preparation_time}} {{receita.preparation_time_unit}}
             </div>
         </div>
         <div class="receitas-meta receitas-servings">
             <h3 class="recipe-meta-title"><i class="fas fa-pizza-slice"></i> Porções</h3>
             <div class="recipe-meta-text">
-                0 Porções
+                {{receita.servings}} {{receita.servings_unit}}
             </div>
         </div>
     </div>
-
-    <footer class="receitas-footer">
-        <a class="receitas-read-more button button-dark button-full-width" href="/receitas/3/">
-            <i class="fas fa-eye"></i>
-            <span>ver mais...</span>
-        </a>
-    </footer>
-
-
+    {% if is_detail_page is not True %}
+        <footer class="receitas-footer">
+            <a class="receitas-read-more button button-dark button-full-width" 
+            href="{% url 'receitas:receita' receita.id %}">
+                <i class="fas fa-eye"></i>
+                <span>ver mais...</span>
+            </a>
+        </footer>
+    {% endif %}
+    
+    {% if is_detail_page is True %}
+        <div class="preparation-steps">
+            {{receita.preparation_steps| linebreaksbr}}
+        </div>
+    {% endif %}
 
 </div>
