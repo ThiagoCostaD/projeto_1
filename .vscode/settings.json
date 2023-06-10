@@ -82,4 +82,5 @@
       "typescript": "ts-node",
     },
     "code-runner.ignoreSelection": true,
+    "python.analysis.typeCheckingMode": "basic",
   }
